@@ -3,6 +3,7 @@ import com.example.ilijaangeleski.translator.manager.TranslateManager;
 import com.example.ilijaangeleski.translator.view.TranslateView;
 
 import java.lang.ref.WeakReference;
+import java.util.List;
 
 /**
  * Created by Ilija Angeleski on 11/18/2017.
@@ -17,12 +18,21 @@ public class MainPresenter {
         this.weakView=new WeakReference<>(view);
     }
 
-    public void translate(String text){
+/*    public void translate(String text){
        String translated = translateManager.getTranslation(text);
         String translatedSentance = translateManager.translateSentance(text);
         if(translatedSentance != null){
             weakView.get().translatedText(translated);
             weakView.get().translateSentance(translatedSentance);
         }
+    }*/
+
+    public void translateFromTo(String text,String fromLanguage,String toLanguage){
+        String translated = translateManager.translateSentances(text, fromLanguage, toLanguage);
+        weakView.get().translateSentance(translated);
+    }
+
+    public List<String> getSupportedLanguages(){
+       return translateManager.getSupportedLanguages();
     }
 }
