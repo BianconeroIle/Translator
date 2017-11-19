@@ -33,7 +33,7 @@ public class TranslateManager {
             if(translatedWord != null){
                 translatedSentance.append(translatedWord + " ");
             }else {
-                return word;
+                translatedSentance.append(word + " ");
             }
         }
         return translatedSentance.toString();
